@@ -17,7 +17,14 @@ public class Test extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        userSessionBean.doAction();
-        userSessionBean.doAction("Stanley", 25);
+        try {
+            String action = userSessionBean.doAction();
+            System.out.println("Action Result: " + action);
+
+            userSessionBean.doAction("Stanley", 25);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

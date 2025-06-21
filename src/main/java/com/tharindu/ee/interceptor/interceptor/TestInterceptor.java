@@ -8,7 +8,7 @@ import jakarta.interceptor.InvocationContext;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.util.Arrays;
+//import java.util.Arrays;
 
 public class TestInterceptor {
 
@@ -47,13 +47,17 @@ public class TestInterceptor {
 
 //        Map<String, Object> contextData = context.getContextData();
 //        System.out.println("Context data: " + contextData.size() + " - " + (contextData.isEmpty() ? "No context data" : contextData));
-        context.proceed();
-        return null;
+
+        Object proceed = context.proceed();
+        System.out.println("Method execution result: " + proceed);
+
+        System.out.println("Interceptor Process End!");
+        return proceed;
     }
 
     @PreDestroy
     public void destroy(InvocationContext context) {
         // Cleanup logic if needed
-        System.out.println("TestInterceptor destroyed!");
+        System.out.println("TestInterceptor destroyed!" + context);
     }
 }

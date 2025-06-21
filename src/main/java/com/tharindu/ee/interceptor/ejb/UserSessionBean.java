@@ -14,9 +14,8 @@ public class UserSessionBean {
 //    @Inject
 //    InvocationContext invocationContext;
 
-    public void doAction() {
-        // Business logic for the user session bean
-        System.out.println("Executing action without parameters");
+    public String doAction() {
+        return "Executing action without parameters";
     }
 
     public void doAction(String name, int age) {
